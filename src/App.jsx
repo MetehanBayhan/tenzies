@@ -1,7 +1,7 @@
 import React from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
-import Animation from "./components/Confetti";
+import Confetti from 'react-confetti'
 
 export default function App(){ 
 
@@ -62,7 +62,14 @@ export default function App(){
  
   return (
     <main>
-      {tenzies && <Animation/>}
+      {
+        tenzies &&
+      <Confetti
+        width={600}
+        height={600}
+        numberOfPieces={31}
+      />
+      }
       <h1 className="title">Tenzies</h1>
       <p className="instructions">Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
       <div className="die-wrapper">
@@ -71,7 +78,7 @@ export default function App(){
       <button
         onClick={rollDice}
       >
-        {tenzies ? `Reset Game` : `Roll Dice`}
+        {tenzies ? `New Game` : `Roll Dice`}
       </button>
 
     </main>
