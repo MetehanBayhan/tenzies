@@ -14,16 +14,21 @@ export default function App(){
 
   const diceElements = dice.map((die)=> <Die value={die} />)
 
+  function rollDice(){
+    setDice(allNewDice())
+  }
+ 
   return (
     <main>
       <div className="die-wrapper">
         {diceElements}
       </div>
-      <div className="button-wrapper">
-        <button
-          onClick={() => setDice(allNewDice)}
-        >Roll Dice</button>
-      </div>
+      <button
+        onClick={rollDice}
+      >
+        Roll Dice
+      </button>
+
     </main>
   )
 }
