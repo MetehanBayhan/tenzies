@@ -7,9 +7,14 @@ export default function App(){
 
   const [dice, setDice] = React.useState(allNewDice())
   const [tenzies, setTenzies] = React.useState(false)
-  
+   
   React.useEffect(()=> {
-    setTenzies(dice.every(obj => obj.isHeld === true))
+    const allHeld = dice.every(die => die.isHeld)
+    const allSame = dice.every(die => die.value === dice[0].value)
+    
+    if(allHeld && allSame){
+      setTenzies(old => !old)
+    }
   },[dice])
 
 
@@ -66,7 +71,7 @@ export default function App(){
       <button
         onClick={rollDice}
       >
-        Roll Dice
+        {tenzies ? `Reset Game` : `Roll Dice`}
       </button>
 
     </main>
