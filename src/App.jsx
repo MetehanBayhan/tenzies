@@ -17,7 +17,12 @@ export default function App(){
   return (
     <main>
       <div className="die-wrapper">
-        {/* {diceArray} */}
+        {diceElements}
+      </div>
+      <div className="button-wrapper">
+        <button
+          onClick={() => setDice(allNewDice)}
+        >Roll Dice</button>
       </div>
     </main>
   )
