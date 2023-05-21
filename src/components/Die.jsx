@@ -1,6 +1,5 @@
 import React from "react";
 import "./die.css";
-import { nanoid } from "nanoid";
 
 export default function Die(props){
   const styles = {
@@ -13,7 +12,7 @@ export default function Die(props){
 
   return (
     <div 
-      className="die" 
+    className={props.shake ? `die shake-${Math.ceil(Math.random()*3)}` : 'die'}
       style={styles} 
       onClick={props.holdDice}
     >

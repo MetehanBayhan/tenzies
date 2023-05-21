@@ -2,12 +2,22 @@ import React from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import Confetti from 'react-confetti'
+import "./index.css"
 
 export default function App(){ 
 
   const [dice, setDice] = React.useState(allNewDice())
   const [tenzies, setTenzies] = React.useState(false)
-   
+  const [shake, setShake] = React.useState(false);
+
+  const handleShake = () => {
+    setShake(true);
+    setTimeout(() => {
+      setShake(false);
+      rollDice()
+    }, 1000);
+  };
+  
   React.useEffect(()=> {
     const allHeld = dice.every(die => die.isHeld)
     const allSame = dice.every(die => die.value === dice[0].value)
@@ -51,6 +61,7 @@ export default function App(){
       key={die.id}
       holdDice={()=> {holdDice(die.id)}}
       isHeld={die.isHeld}
+      shake={shake}
     />
   )
 
@@ -64,7 +75,11 @@ export default function App(){
       setDice(allNewDice())
     }
   }
- 
+
+
+
+
+
   return (
     <main>
       {
@@ -86,10 +101,13 @@ export default function App(){
         {diceElements}
       </div>
       <button
-        onClick={rollDice}
+        onClick={()=> {
+          handleShake()
+        }}
       >
         {tenzies ? `New Game` : `Roll Dice`}
       </button>
+      
 
     </main>
   )
