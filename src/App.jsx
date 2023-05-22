@@ -27,7 +27,7 @@ export default function App(){
     }
   },[dice])
 
-
+  
   function allNewDice(){
     const diceArray = Array(10).fill(null).map(() => (
       {
