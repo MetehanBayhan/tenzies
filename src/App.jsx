@@ -69,7 +69,8 @@ export default function App(){
       setDice(oldDiceArray => oldDiceArray.map((die)=>{
           return die.isHeld  ? die : generateNewDie()
         }))
-    } else {
+    } 
+    else {
       setTenzies(false)
       setDice(allNewDice())
     }
