@@ -12,7 +12,7 @@ export default function Die(props){
 
   return (
     <div 
-    className={props.shake ? `die shake-${Math.ceil(Math.random()*3)}` : 'die'}
+    className={!props.isHeld && props.shake ? `die shake-${Math.ceil(Math.random()*3)}` : 'die'}
       style={styles} 
       onClick={props.holdDice}
     >
